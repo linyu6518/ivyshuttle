@@ -99,7 +99,7 @@ const Home: React.FC<HomeProps> = ({ lang, openAI }) => {
         <div className="absolute inset-0 bg-black/70 z-[1] pointer-events-none"></div>
         <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white z-10 mt-2 md:mt-0">
           <div className="max-w-4xl">
-            <h1 className="text-4xl sm:text-6xl md:text-8xl font-light font-canela leading-[1.15] mb-6 md:mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <h1 className="text-7xl md:text-8xl font-light font-canela leading-[1.15] mb-6 md:mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
               {content.heroTitle}
             </h1>
             <p className="text-base sm:text-xl md:text-2xl text-slate-200 mb-8 md:mb-12 opacity-90 max-w-2xl font-light leading-relaxed">
