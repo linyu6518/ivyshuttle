@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IvyShuttle - Elite Education Consulting</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Canela';
+            src: url('/fonts/Canela-Regular.woff2') format('woff2'),
+                 url('/fonts/Canela-Regular.woff') format('woff'),
+                 url('/fonts/Canela-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Canela';
+            src: url('/fonts/Canela-Bold.woff2') format('woff2'),
+                 url('/fonts/Canela-Bold.woff') format('woff'),
+                 url('/fonts/Canela-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                brand: {
+                  red: '#A51C30', // Harvard Crimson
+                  black: '#1E1E1E',
+                  light: '#FDFDFD'
+                }
+              },
+              fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+                heading: ['Playfair Display', 'Noto Serif SC', 'serif'],
+                canela: ['Canela', 'serif'],
+              }
+            }
+          }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-heading { font-family: 'Playfair Display', 'Noto Serif SC', serif; }
+        .font-canela { font-family: 'Canela', 'serif'; }
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        .animate-scroll {
+            animation: scroll 30s linear infinite;
+        }
+        .animate-scroll:hover {
+            animation-play-state: paused;
+        }
+        @keyframes scroll-slow {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        .animate-scroll-slow {
+            animation: scroll-slow 60s linear infinite;
+        }
+        .animate-scroll-slow:hover {
+            animation-play-state: paused;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-brand-light text-brand-black">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

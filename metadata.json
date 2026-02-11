@@ -1,0 +1,8 @@
+{
+  "name": "IvyShuttle Official Website Prototype",
+  "description": "A modern, professional portal for K12 and elite university admissions services featuring an AI assistant and learning system integration.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
