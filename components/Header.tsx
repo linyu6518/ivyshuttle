@@ -50,8 +50,14 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, openAI }) => {
             {/* AI Assistant Button removed from here */}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
+          {/* Mobile: Language + Menu Button */}
+          <div className="flex items-center gap-1 md:hidden">
+            <button
+              onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+              className="inline-flex items-center justify-center px-3 py-2 rounded-md text-slate-600 hover:text-brand-red hover:bg-slate-100 focus:outline-none text-sm font-bold uppercase tracking-tight border border-slate-200"
+            >
+              {lang === 'zh' ? 'EN' : 'CN'}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-brand-red hover:bg-slate-100 focus:outline-none"
@@ -82,14 +88,6 @@ const Header: React.FC<HeaderProps> = ({ lang, setLang, openAI }) => {
                 {item.label[lang]}
               </Link>
             ))}
-            <div className="flex flex-col space-y-2 p-3 border-t border-slate-100 mt-2">
-              <button
-                onClick={() => { setLang(lang === 'zh' ? 'en' : 'zh'); setIsOpen(false); }}
-                className="text-left py-2 text-slate-600 font-medium"
-              >
-                {lang === 'zh' ? 'Switch to English' : '切换为中文'}
-              </button>
-            </div>
           </div>
         </div>
       )}

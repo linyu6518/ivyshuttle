@@ -63,6 +63,11 @@
         .animate-scroll {
             animation: scroll 30s linear infinite;
         }
+        @media (max-width: 768px) {
+            .animate-scroll {
+                animation-duration: 12s;
+            }
+        }
         .animate-scroll:hover {
             animation-play-state: paused;
         }
