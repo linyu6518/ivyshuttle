@@ -80,8 +80,8 @@ const Home: React.FC<HomeProps> = ({ lang, openAI }) => {
 
   return (
     <div className="space-y-0 pb-0">
-      {/* Hero Section - No bottom gradient, cleaner architecture */}
-      <section className="relative h-[64vh] flex items-center bg-brand-black overflow-hidden">
+      {/* Hero Section - pt-20 so content is not cut by sticky header */}
+      <section className="relative min-h-[92vh] md:min-h-0 md:h-[64vh] flex flex-col pt-20 items-start md:items-center justify-start md:justify-center bg-brand-black overflow-hidden">
         <div className="absolute inset-0 z-0">
             <video 
                 ref={videoRef}
@@ -97,15 +97,15 @@ const Home: React.FC<HomeProps> = ({ lang, openAI }) => {
         </div>
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/70 z-[1] pointer-events-none"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white z-10">
+        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white z-10 mt-2 md:mt-0">
           <div className="max-w-4xl">
-            <h1 className="text-6xl sm:text-8xl font-light font-canela leading-[1.1] mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-light font-canela leading-[1.15] mb-6 md:mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000">
               {content.heroTitle}
             </h1>
-            <p className="text-xl sm:text-2xl text-slate-200 mb-12 opacity-90 max-w-2xl font-light leading-relaxed">
+            <p className="text-base sm:text-xl md:text-2xl text-slate-200 mb-8 md:mb-12 opacity-90 max-w-2xl font-light leading-relaxed">
               {content.heroSubtitle}
             </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8">
+            <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-8">
               <Link to="/programs" className="px-12 py-5 bg-brand-red text-white font-bold text-center hover:bg-red-800 transition-all uppercase tracking-widest text-xs">
                 {content.cta1}
               </Link>

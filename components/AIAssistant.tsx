@@ -1,6 +1,5 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { GoogleGenAI } from '@google/genai';
 import { Language } from '../types';
 
 interface Message {
@@ -15,12 +14,13 @@ interface AIAssistantProps {
 }
 
 const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onClose, lang }) => {
+  const notConfiguredMsg = lang === 'zh' ? '还没有被配置。' : 'Not configured yet.';
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
       content: lang === 'zh' 
-        ? '你好！我是IvyShuttle AI助手，很高兴为你提供留学咨询。请问你想了解哪方面的资讯？' 
-        : 'Hello! I am IvyShuttle AI Assistant. How can I help you with your study abroad plans today?'
+        ? '你好！我是IvyShuttle AI助手。' 
+        : 'Hello! I am IvyShuttle AI Assistant.'
     }
   ]);
   const [input, setInput] = useState('');
@@ -44,32 +44,10 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onClose, lang }) => {
     setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
     setLoading(true);
 
-    try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: userMessage,
-        config: {
-          systemInstruction: `You are an expert education consultant for IvyShuttle (Harvard Express). 
-          Your goal is to help parents and students with K12/High school and US college admissions. 
-          Be professional, encouraging, and informative. 
-          Refer to IvyShuttle's elite programs like ECAT. 
-          Respond in the language the user is using (primary: ${lang === 'zh' ? 'Chinese' : 'English'}).`,
-        }
-      });
-
-      const aiText = response.text || 'Sorry, I encountered an issue.';
-      setMessages(prev => [...prev, { role: 'assistant', content: aiText }]);
-      
-      if (messages.length >= 4 && !showLeadForm) {
-        setShowLeadForm(true);
-      }
-    } catch (error) {
-      console.error('AI Error:', error);
-      setMessages(prev => [...prev, { role: 'assistant', content: 'Something went wrong. Please try again later.' }]);
-    } finally {
-      setLoading(false);
-    }
+    // Placeholder: AI not configured yet
+    await new Promise(r => setTimeout(r, 400));
+    setMessages(prev => [...prev, { role: 'assistant', content: notConfiguredMsg }]);
+    setLoading(false);
   };
 
   const submitLead = (e: React.FormEvent) => {
@@ -79,10 +57,11 @@ const AIAssistant: React.FC<AIAssistantProps> = ({ isOpen, onClose, lang }) => {
     setShowLeadForm(false);
   };
 
+  const fabPosition = 'fixed bottom-20 right-4 sm:bottom-6 sm:right-6 z-[60]';
   if (!isOpen) return (
     <button
       onClick={onClose}
-      className="fixed bottom-6 right-6 w-16 h-16 bg-brand-red text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-brand-black transition-all z-[60] group scale-100 hover:scale-110 active:scale-95"
+      className={`${fabPosition} w-14 h-14 sm:w-16 sm:h-16 bg-brand-red text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-brand-black transition-all group scale-100 hover:scale-110 active:scale-95`}
     >
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
